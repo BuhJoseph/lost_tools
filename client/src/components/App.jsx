@@ -1,5 +1,8 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from './Navbar.jsx';
+import Home from './Pages/Home.jsx';
+import Checklist from './Pages/Checklist.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,14 +11,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div id="title">Fish Swim</div>
-        <div id="controls">
-          <div className="underline">Controls</div>
-          <div>Up: ↑</div>
-          <div>Down: ↓</div>
-        </div>
-      </div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' exact Component={Home} />
+          <Route path='/checklist' Component={Checklist} />
+        </Routes>
+      </Router>
     );
   };
 }
