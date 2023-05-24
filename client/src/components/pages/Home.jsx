@@ -7,7 +7,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <div id="title">Welcome to Lost Tools</div>
       </div>
     );

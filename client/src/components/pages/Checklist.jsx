@@ -7,7 +7,7 @@ class Checklist extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <div id="title">Checklist</div>
       </div>
     );
