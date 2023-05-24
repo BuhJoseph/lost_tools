@@ -12,12 +12,12 @@ class Navbar extends React.Component {
         <div id='title'>Lost Tools</div>
         <ul>
           <li>
-            <Link  to='/'>
+            <Link to='/' style={{ textDecoration: 'none' }}>
               <div className="links">Home</div>
             </Link>
           </li>
           <li>
-            <Link  to='/checklist'>
+            <Link to='/checklist' style={{ textDecoration: 'none' }}>
               <div className="links">Checklist</div>
             </Link>
           </li>
