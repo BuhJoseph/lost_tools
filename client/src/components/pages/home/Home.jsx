@@ -8,7 +8,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Box>
+      <Box sx={{ padding: '10px' }}>
         <Typography>Welcome to Lost Tools!</Typography>
       </Box>
     );
