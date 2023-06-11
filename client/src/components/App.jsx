@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './Navbar.jsx';
+import { Box, CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
+import Navbar from './navbar/Navbar.jsx';
 import Home from './Pages/Home.jsx';
 import Checklist from './Pages/Checklist.jsx';
 
@@ -12,11 +13,14 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' exact Component={Home} />
-          <Route path='/checklist' Component={Checklist} />
-        </Routes>
+          <Navbar />
+          <Box>
+            <Toolbar />
+            <Routes>
+              <Route path='/' exact Component={Home} />
+              <Route path='/checklist' Component={Checklist} />
+            </Routes>
+          </Box>
       </Router>
     );
   };
