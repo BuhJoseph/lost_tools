@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import ChecklistTable from './ChecklistTable.jsx';
+
 
 class Checklist extends React.Component {
   constructor(props) {
@@ -9,7 +15,7 @@ class Checklist extends React.Component {
   render() {
     return (
       <Box sx={{ padding: '10px' }}>
-        <Typography>Checklist</Typography>
+        <ChecklistTable />
       </Box>
     );
   };
