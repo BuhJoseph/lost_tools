@@ -9,16 +9,16 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(ign, una, chaos, guardian) {
+  return { ign, una, chaos, guardian };
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Kuhway', true, true, true),
+  createData('Kuhgay', true, false, false),
+  createData('Seleno', false, true, false),
+  createData('Gawybawy', false, false, false),
+  createData('Yushigi', false, false, false),
 ];
 
 const cellHeight = 20;
@@ -26,6 +26,20 @@ const cellHeight = 20;
 class ChecklistTable extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      data: rows,
+    }
+
+    this.updateCheckbox = this.updateCheckbox.bind(this);
+  }
+
+  updateCheckbox(e, character, field) {
+    console.log(e.target.checked);
+    this.state.data[this.state.data.findIndex(row => row.ign == character)][field] = e.target.checked;
+    this.setState({
+      data: this.state.data
+    });
   }
 
   render() {
@@ -45,29 +59,32 @@ class ChecklistTable extends React.Component {
             <TableCell sx={{ height: `${cellHeight}px` }}>
               <Typography>Guardian Raid</Typography>
             </TableCell>
-            <TableCell sx={{ height: `${cellHeight}px` }}>
-              <Typography>something</Typography>
-            </TableCell>
           </TableRow>
           <TableBody sx={{ display: 'flex' }}>
             {rows.map((row) => (
-              <TableRow key={row.name} sx={{ display: 'flex', flexDirection: 'column' }}>
+              <TableRow key={row.ign} sx={{ display: 'flex', flexDirection: 'column' }}>
                 <TableCell scope="row" sx={{ height: `${cellHeight}px` }}>
                   <Typography>
-                    {row.name}
+                    {row.ign}
                   </Typography>
                 </TableCell>
                 <TableCell align="center" sx={{ height: `${cellHeight}px` }}>
-                  <Checkbox sx={{ height: `${cellHeight}px` }}/>
+                  <Checkbox
+                    checked={row.una}
+                    sx={{ height: `${cellHeight}px` }}
+                    onChange={(e) => this.updateCheckbox(e, row.ign, 'una')}/>
                 </TableCell>
                 <TableCell align="center" sx={{ height: `${cellHeight}px` }}>
-                  <Checkbox sx={{ height: `${cellHeight}px` }}/>
+                <Checkbox
+                    checked={row.chaos}
+                    sx={{ height: `${cellHeight}px` }}
+                    onChange={(e) => this.updateCheckbox(e, row.ign, 'chaos')}/>
                 </TableCell>
                 <TableCell align="center" sx={{ height: `${cellHeight}px` }}>
-                  <Checkbox sx={{ height: `${cellHeight}px` }}/>
-                </TableCell>
-                <TableCell align="center" sx={{ height: `${cellHeight}px` }}>
-                  <Checkbox sx={{ height: `${cellHeight}px` }}/>
+                <Checkbox
+                    checked={row.guardian}
+                    sx={{ height: `${cellHeight}px` }}
+                    onChange={(e) => this.updateCheckbox(e, row.ign, 'guardian')}/>
                 </TableCell>
               </TableRow>
             ))}
